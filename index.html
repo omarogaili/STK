@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="sv"><!-- sidans språk är Svenska -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style/style.css">
+    <link rel="icon" sizes="32x32" href="media/icon.jpg" title="STK-TV">
+    <!-- google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@1,300&display=swap" rel="stylesheet">
+    <!-- icons style link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>STK-TV</title>
+</head>
+<body>
+    <main class="mainContainer"><!-- i main ska allt ligga-->
+        <header class="header" id="header"><!-- första delen är header där ska jag ha lite links för andra sidor och tjänster-->
+            <nav class="navbar">
+                <ul>
+                    <li><a class="fa fa-home" href="index.html" title="StartSida" target="_blank"> STK</a></li>
+                    <li><a class="fa fa-info" href="omoss.html" title="Om oss" target="_blank"> om oss</a></li>
+                    <li><a class="fa fa-phone" href="kontakt.html" title="Kontakta" target="_blank"> Kontakta oss</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <form class="the-list"><!-- i form ska jag ha data som användaren ska kunna spara och söka efter-->
+            <fieldset class="formbox"><!-- fieldset använder jag för att den ska innehåller inputs som vi ska ha i formen
+            fieldset kommer och ha en border och det vill jag inte ha med så den ska jag ställa på none i sass-->
+                <legend><!-- legend används för att skriva information om formen till användaren  jag anser att detta 
+                kommer och göra det mer tydlig för användaren, därför använda jag mig av det så de vet att i här ska man 
+            lägga program i deras lista-->
+                    Lägg till program i din list
+                </legend>
+                <label for="program_name">Namnet på programmet<!-- label använder jag för att skriva vad vi förväntar oss
+                att användaren ska mata in här. input ska vara av typ text här för att den ska ha en text namnet på programmet
+            eller på beskrivningen, men i åldergräns så använder jag typ nummer för först kommer vi och en siffra,
+        det blir mer tydlig för den som kommer och kolla på koden att här ska vi ha ett nummer, tredje det blir lättare 
+    för användaren att mata in siffror i webläsaren med pilerna uppåt eller neråt. och till och mer i mobil enheten 
+kommer de och få bara siffror i keyboard vid inmatningen  -->
+                    <input type="text" id="program_name" placeholder="Namnet på programmet"></label>
+                <label for="description"> Beskrivning
+                    <input type="text" id="description" placeholder="Beskrivning">
+                </label>
+                <label for="age_limit">åldersgräns
+                    <input type="number" id="age_limit" placeholder="åldersgräns">
+                </label>
+                <!-- knappen här ha den funktionen lagradata () för att lagra det som användaren har skrivit -->
+                <button onclick="lagradata()" type="submit" id="list-btn">lägg till listan</button>
+                <label for="search"> sök
+                    <!-- här ska man kunna söka. jag tycker att det är bäst att man ska använda typen för rätt 
+                    sak det blir lättare och läsa och förstå koden-->
+                    <input type="search" id="search" placeholder="sök"></label>
+                <button id="btn-search">Sök</button>
+                <span id="result"></span>
+            </fieldset>
+        </form>
+        <aside class="intro-section"><!-- den delen ska innehålla side information om kanalen-->
+            <aside class="newPrograms"><!-- ska ligger till vänster och ska innehåller bilder om olika program-->
+                <h4>Våra program</h4>
+                <figure class="image-animations">
+                    <img src="media/efter-fem.jpg" alt="program leddaren Tilda för programmet efter fem i tv4"
+                        title="efter fem">
+                    <img src="media/bundesokerfru.jpg" alt="logan på programmer bunde söker fru"
+                        title="bonde söker fru">
+                    <img src="media/logo-bingolotto.jpg" alt=" logan på programmer bingolotto" title="bingolotto">
+                </figure>
+            </aside>
+            <div class="photo-container">
+                <figure class="slide-Continer">
+                    <img src="media/COVERM_9b11f665-0cd0-4a5b-a071-0debbeddc694_sv.jpg"
+                        title="Avengers infinity war"
+                        alt="omslags bilden på fimen Avengers infinity war i bilden ser man thanos, och nedanför ser du från höger: Thor, natasha romanoff, ironman, captain america och  Black Panther">
+                    <img  src="media/nukaoOc4Q5S4IihkI81aA0DIS1q.jpg" title="the Joker 2019"
+                        alt=" i bilden ser du Joaquin Phoenix från sin film the Joker 2019">
+                    <img  src="media/scale.jpg"
+                        alt=" i bilden ser du Mel Gibson från sin film Breaveheart 1995 ">
+                    <div class="btn-images">
+                        <span id="prev" class="prevbtn">&#8249;</span>
+                        <span id="indicators"></span>
+                        <span id="next" class="nextbtn">&#8250;</span>
+                    </div>
+                </figure>
+            </div>
+            <aside class="video-aside"> <!-- den delen ska ligga till höger och den ska innehåller en video  -->
+                <h4>Kommer snart</h4>
+                <iframe width="560" height="415" src="https://www.youtube.com/embed/z1xJAyVKAPY?si=HP56UzWKKzqJbeac"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen style="border: none;">
+                </iframe>
+            </aside>
+        </aside>
+        <!-- i den sectionen så tänker jag att utveckla en tid tablå genom att skapa en array i JS och när man trycker på en knapp så kommer upp namnet på programmen och tiden de ständas 
+        två sätt egentligen har jag första att skapa en event derikt genom id namnet, eller genom att skapa en funktion och kappa på den när man trycker på knappen
+        . jag väljer första sättet för att jag tycker att det blir lättare för mig och följer min kod. och för att jag vill att listan ska skapas bara när man 
+    trycker på knappen -->
+        <section class="gudiesection">
+            <h2>tv tablå</h2>
+            <article id="tv_tabla">
+                <h4>här kan du se tv tablå på alla våra program</h4>
+            </article>
+        </section>
+        <!-- i den sectionen tänkte jag bygga en kategori, men spara den till sen -->
+        <!-- <section class="newssection">
+            <h2>Kategori </h2>
+            <article>
+                <h4>se vilka nya program som finns hos oss</h4>
+            </article>
+        </section> -->
+        <footer class="footer">
+            <a class="fa fa-facebook" href="" target="_blank" title="facebook"></a>
+            <a class="fa fa-instagram" href="" target="_blank" title="instagram"></a>
+            <a class="fa fa-twitter" href="" target="_blank" title="twitter"></a>
+            <a class="fa fa-youtube" href="" target="_blank" title="youtube"></a>
+        </footer>
+    </main>
+    <script src="Script/script.js"></script>
+</body>
+</html>

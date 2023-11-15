@@ -1,0 +1,271 @@
+@charset "UTF-8";
+@keyframes omvingfigur {
+  0% {
+    translate: -650px 0;
+  }
+  100% {
+    translate: 650px 0;
+  }
+}
+body {
+  background: #0e1111;
+  font: "Noto Sans", sans-serif 1.4em;
+  color: #edf7fc;
+}
+@media only screen and (max-width: 1768px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+  }
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media only screen and (max-width: 1768px) {
+  .mainContainer {
+    width: 100%;
+  }
+}
+.mainContainer .header {
+  height: 5em;
+  padding-top: 1em;
+  background: rgba(114, 124, 121, 0.26);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
+}
+.mainContainer .header .navbar ul {
+  display: flex;
+  justify-content: space-evenly;
+  flex: 20px 40px auto wrap;
+  align-items: center;
+  list-style: none;
+  font-family: "Noto Sans", sans-serif;
+}
+.mainContainer .header .navbar a.fa-home {
+  text-decoration: none;
+  color: #edf7fc;
+  font-size: 1.4em;
+}
+.mainContainer .header .navbar a.fa-home:hover {
+  text-decoration: underline;
+  transform: scale(1.1);
+}
+.mainContainer .header .fa-info {
+  text-decoration: none;
+  color: #edf7fc;
+  font-size: 1.4em;
+}
+.mainContainer .header .fa-info:hover {
+  transform: scale(1.1);
+  text-decoration: underline;
+}
+.mainContainer .header .fa-phone {
+  text-decoration: none;
+  color: #edf7fc;
+  font-size: 1.4em;
+}
+.mainContainer .header .fa-phone:hover {
+  transform: scale(1.1);
+  text-decoration: underline;
+}
+.mainContainer .header .fa-home:active,
+.mainContainer .header .fa-info:active,
+.mainContainer .header .fa-phone:active {
+  color: #31d4d4;
+}
+.mainContainer .the-list {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: rgba(114, 124, 121, 0.26);
+  -webkit-backdrop-filter: blur(40px);
+          backdrop-filter: blur(40px);
+}
+.mainContainer .the-list .formbox {
+  display: flex;
+  flex-direction: row;
+  border: none;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  font-size: 1em;
+}
+.mainContainer .the-list .formbox input {
+  border-radius: 20px;
+}
+.mainContainer .the-list .formbox input::-moz-placeholder {
+  font-size: 1em;
+}
+.mainContainer .the-list .formbox input::placeholder {
+  font-size: 1em;
+}
+.mainContainer .the-list .formbox #age_limit {
+  width: 3.5em;
+}
+.mainContainer .the-list .formbox #list-btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0.5em;
+  padding: 0.5em;
+}
+.mainContainer .the-list .formbox #btn-search {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0.5em;
+  padding: 0.5em;
+}
+.mainContainer .the-list .formbox #result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.mainContainer .the-list .formbox #result #close {
+  cursor: pointer;
+  color: red;
+}
+.mainContainer .intro-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  /* här skapar jag en slide container för bilderna som jag vill lägga upp i sidan 
+  jag anger position relative for att sedan ska jag kunna ligga alla bilder på varandra genom att ange deras position 
+  absolute.
+  jag kunde redan nu activera första bilden men jag tänkte träna på JavaScript så jag ska activera den i JS koden. 
+   */
+}
+@media only screen and (max-width: 1768px) {
+  .mainContainer .intro-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+}
+.mainContainer .intro-section .newPrograms {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 4em;
+}
+.mainContainer .intro-section .newPrograms .image-animations {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  height: 15em;
+  animation: omvingfigur 20s linear infinite;
+}
+.mainContainer .intro-section .newPrograms .image-animations:hover {
+  animation-play-state: paused;
+}
+.mainContainer .intro-section .newPrograms img {
+  width: 12em;
+}
+.mainContainer .slide-Continer {
+  position: relative;
+  margin: 2em auto;
+  align-items: center;
+  padding: 1em;
+  width: 35em;
+  display: flex;
+  justify-content: center;
+  height: 33em;
+  /* efter som jag vill att bilderna ska ha fade in när man trycker på nästa så har jag gett opacity 0  och skapat en
+  klass med opacity 1  (.showing ) */
+}
+.mainContainer .slide-Continer img {
+  position: absolute;
+  opacity: 0;
+  width: 34em;
+  height: 33em;
+  transition: opacity 1s;
+  z-index: 1;
+  box-shadow: #edf7fc 0px 0px 30px;
+}
+.mainContainer .slide-Continer .showing {
+  opacity: 1;
+}
+.mainContainer .slide-Continer .btn-images {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 33em;
+}
+.mainContainer .slide-Continer .btn-images .prevbtn,
+.mainContainer .slide-Continer .btn-images .nextbtn {
+  font-size: 5em;
+  color: #edf7fc;
+  background-color: rgba(114, 124, 121, 0.26);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  cursor: pointer;
+  z-index: 2;
+  left: 1em;
+  color: #edf7fc;
+  background-color: rgba(114, 124, 121, 0.26);
+  backdrop-filter: blur(5px);
+  z-index: 2;
+  cursor: pointer;
+}
+.mainContainer .slide-Continer .btn-images .nextbtn {
+  font-size: 5em;
+  color: #edf7fc;
+  background-color: rgba(114, 124, 121, 0.26);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  cursor: pointer;
+  z-index: 2;
+}
+.mainContainer .video-aside {
+  text-transform: uppercase;
+}
+
+.gudiesection {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  margin: 1em;
+}
+.gudiesection #tv_tabla {
+  font-size: large;
+}
+.gudiesection #tv_tabla #close {
+  cursor: pointer;
+}
+.gudiesection #tv_tabla #btn_tv_table {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0.5em;
+  padding: 0.5em;
+}
+
+.footer {
+  height: 10em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background: rgba(114, 124, 121, 0.26);
+}
+.footer a {
+  text-decoration: none;
+  color: #edf7fc;
+  font-size: 2em;
+}
+.footer a:hover {
+  transform: scale(2);
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,275 @@
+$font-family: 'Noto Sans', sans-serif;
+$darkmod-backgroundcolor: #0e1111;
+$backgroundcolor: #edf7fc;
+$background-color-trans: rgba(114, 124, 121, 0.26);
+$text-color: #edf7fc;
+$btnborder: .5em;
+$btnpadding: 0.5em ;
+
+
+@keyframes omvingfigur {
+    0% {
+        translate: -650px 0;
+    }
+    100% {
+        translate: 650px 0;
+    }
+}
+
+
+body {
+    background: $darkmod-backgroundcolor;
+    font: $font-family 1.4em;
+    color: #edf7fc;
+    @media only screen and (max-width: 1768px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+    }
+}
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @media only screen and (max-width: 1768px) {
+        width: 100%;
+    }
+    .header {
+        height: 5em;
+        padding-top: 1em;
+        background: $background-color-trans;
+        backdrop-filter: blur(15px);
+        .navbar ul {
+            display: flex;
+            justify-content: space-evenly;
+            flex: 20px 40px auto wrap;
+            align-items: center;
+            list-style: none;
+            font-family: $font-family;
+        }
+        .navbar a.fa-home {
+            text-decoration: none;
+            color: $backgroundcolor;
+            font-size: 1.4em;
+            &:hover {
+                text-decoration: underline;
+                transform: scale(1.1);
+            }
+        }
+        .fa-info {
+            text-decoration: none;
+            color: $backgroundcolor;
+            font-size: 1.4em;
+            &:hover {
+                transform: scale(1.1);
+                text-decoration: underline;
+            }
+        }
+        .fa-phone {
+            text-decoration: none;
+            color: $backgroundcolor;
+            font-size: 1.4em;
+            &:hover {
+                transform: scale(1.1);
+                text-decoration: underline;
+            }
+        }
+        .fa-home:active,
+        .fa-info:active,
+        .fa-phone:active {
+            color: #31d4d4;
+        }
+    }
+    .the-list {
+        position: sticky;
+        top: 0;
+        z-index: 3;
+        background: $background-color-trans;
+        backdrop-filter: blur(40px);
+        .formbox {
+            display: flex;
+            flex-direction: row;
+            border: none;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            font-size: 1em;
+            input {
+                border-radius: 20px;
+            }
+            input::placeholder {
+                font-size: 1em;
+            }
+            #age_limit {
+                width: 3.5em;
+            }
+            #list-btn {
+                border: none;
+                outline: none;
+                cursor: pointer;// så att användaren vet att det är något de kan trycker  på 
+                border-radius: $btnborder;
+                padding:$btnpadding ;
+            }
+            #btn-search{
+                border: none;
+                outline: none;
+                cursor: pointer;// så att användaren vet att det är något de kan trycker  på 
+                border-radius: $btnborder;
+                padding:$btnpadding ;
+            }
+            #result {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                #close {
+                    cursor: pointer;
+                    color: red;
+                }
+            }
+        }
+    }
+    .intro-section {
+        display: flex;
+        flex-direction: row;// i vanliga fall så vill jag att intro section ligger i rad med utrymmer i mellan och att 
+        justify-content: space-between;
+        align-items: start;
+        @media only screen and (max-width: 1768px) {
+            flex-direction: column; // jag tänker att när skärmmen är liten så dessa funktioner ska sidan ha 
+            align-items: center; // istället för flex direction row så ska det blir column så allt innehåll visas under varandra
+            gap: 50px;
+        }
+        .newPrograms {
+            display: flex;
+            flex-direction: column;// då rubriken hämnar först + att jag kan styra de bättre med flex 
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; // så att bilderna när de få animation inte gå över .newPrograms gränsen  
+            margin-top: 4em;
+            .image-animations {
+                display: flex;
+                flex-direction: row;
+                gap: 20px; // utrymme imellan ska var 20px 
+                height: 15em; // container ska ha 15em i höjden 
+                animation: omvingfigur 20s linear infinite;
+                &:hover {
+                    animation-play-state: paused; // play state använder jag så att när man hovrar över bilderna så stannar de 
+                }
+            }
+            img {
+                width: 12em;
+            }
+        }
+        /* här skapar jag en slide container för bilderna som jag vill lägga upp i sidan 
+jag anger position relative for att sedan ska jag kunna ligga alla bilder på varandra genom att ange deras position 
+absolute.
+jag kunde redan nu activera första bilden men jag tänkte träna på JavaScript så jag ska activera den i JS koden. 
+ */
+    }
+    .slide-Continer {
+        position: relative;
+        margin: 2em auto;
+        align-items: center;
+        padding: 1em;
+        width: 35em;
+        display: flex;
+        justify-content: center;
+        height: 33em;
+        /* efter som jag vill att bilderna ska ha fade in när man trycker på nästa så har jag gett opacity 0  och skapat en
+        klass med opacity 1  (.showing ) */
+        & img {
+            position: absolute;
+            opacity: 0;
+            width: 34em;
+            height: 33em;
+            transition: opacity 1s;
+            z-index: 1;
+            box-shadow: $backgroundcolor 0px 0px 30px;
+        }
+        .showing {
+            opacity: 1;
+        }
+        .btn-images {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 33em;
+            .prevbtn,
+            .nextbtn {
+                font-size: 5em;
+                color: $backgroundcolor;
+                background-color: $background-color-trans;
+                backdrop-filter: blur(5px);
+                cursor: pointer;// så att användaren vet att det är något de kan trycker  på 
+                z-index: 2;
+                left: 1em;
+                color: $backgroundcolor;
+                background-color: $background-color-trans;
+                backdrop-filter: blur(5px);
+                z-index: 2;
+                cursor: pointer;// så att användaren vet att det är något de kan trycker  på 
+            }
+            .nextbtn {
+                font-size: 5em;
+                color: $backgroundcolor;
+                background-color: $background-color-trans;
+                backdrop-filter: blur(5px);
+                cursor: pointer;// så att användaren vet att det är något de kan trycker  på 
+                z-index: 2;
+            }
+        }
+    }
+    .video-aside {
+        text-transform: uppercase;
+    }
+}
+
+.gudiesection {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end; //eftersom jag vill att den ska var på höger sidan av skärmen så Kategori senare i tiden hämna på vänster sidan
+    align-items: center;
+    justify-content: center;
+    margin: 1em;
+    #tv_tabla {
+        font-size: large;
+        #close {
+            cursor: pointer;// så att användaren vet att det är något de kan trycker  på 
+        }
+        #btn_tv_table{
+            border: none;
+            outline: none;
+            cursor: pointer;// så att användaren vet att det är något de kan trycker  på 
+            border-radius: $btnborder;
+            padding:$btnpadding ;
+        }
+    }
+}
+
+//Kategori sparar jag till sen 
+// .newssection {
+//     display: flex;
+//     justify-content: start;
+//     margin: 1em;
+// }
+.footer {
+    height: 10em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background: $background-color-trans;
+
+    a {
+        text-decoration: none;
+        color: $text-color;
+        font-size: 2em;
+
+        &:hover {
+            transform: scale(2);
+        }
+    }
+}

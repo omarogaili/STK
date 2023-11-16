@@ -33,18 +33,18 @@
             lägga program i deras lista-->
                     Lägg till program i din list
                 </legend>
-                <label for="program_name">Namnet på programmet<!-- label använder jag för att skriva vad vi förväntar oss
+                <label for="program_name"aria-label="fyll i namnet på programmet">Namnet på programmet<!-- label använder jag för att skriva vad vi förväntar oss
                 att användaren ska mata in här. input ska vara av typ text här för att den ska ha en text namnet på programmet
             eller på beskrivningen, men i åldergräns så använder jag typ nummer för först kommer vi och en siffra,
         det blir mer tydlig för den som kommer och kolla på koden att här ska vi ha ett nummer, tredje det blir lättare 
     för användaren att mata in siffror i webläsaren med pilerna uppåt eller neråt. och till och mer i mobil enheten 
 kommer de och få bara siffror i keyboard vid inmatningen  -->
-                    <input type="text" id="program_name" placeholder="Namnet på programmet"></label>
-                <label for="description"> Beskrivning
-                    <input type="text" id="description" placeholder="Beskrivning">
+                    <input type="text" id="program_name" placeholder="Namnet på programmet" required></label>
+                <label for="description" aria-label="fyll i Beskriving"> Beskrivning
+                    <input type="text" id="description" placeholder="Beskrivning" required>
                 </label>
-                <label for="age_limit">åldersgräns
-                    <input type="number" id="age_limit" placeholder="åldersgräns">
+                <label for="age_limit"  aria-label="fyll i åldersgräns">åldersgräns
+                    <input type="number" id="age_limit" placeholder="åldersgräns" required>
                 </label>
                 <!-- knappen här ha den funktionen lagradata () för att lagra det som användaren har skrivit -->
                 <button onclick="lagradata()" type="submit" id="list-btn">lägg till listan</button>

@@ -23,9 +23,8 @@ body {
     color: #edf7fc;
     @media only screen and (max-width: 1768px) {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: start;
+        flex-direction: column; // eftersom jag vill att allt innehåll ligger efter varandra (column) när skärmen är mindre 
+        justify-content: center; // jag vill också att de ska i center av sidan . och align-items kommer och vara inherit (arvs). 
     }
 }
 .mainContainer {
@@ -33,7 +32,7 @@ body {
     flex-direction: column;
     justify-content: center;
     @media only screen and (max-width: 1768px) {
-        width: 100%;
+        width: 100%; // bredden på main container ska vara 100% av skärmen 
     }
     .header {
         height: 5em;
@@ -42,8 +41,7 @@ body {
         backdrop-filter: blur(15px);
         .navbar ul {
             display: flex;
-            justify-content: space-evenly;
-            flex: 20px 40px auto wrap;
+            justify-content: space-evenly; // då hämnar då i rätt plats och i jämna utrymme mellan de 
             align-items: center;
             list-style: none;
             font-family: $font-family;
@@ -84,7 +82,7 @@ body {
     .the-list {
         position: sticky;
         top: 0;
-        z-index: 3;
+        z-index: 3; // så att den hämnar över alla andra innehåll 
         background: $background-color-trans;
         backdrop-filter: blur(40px);
         .formbox {
